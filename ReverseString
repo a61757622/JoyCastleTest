@@ -1,0 +1,36 @@
+using System;
+using System.Text;
+
+class ReverseString
+{
+    static void Main(string[] args)
+    {
+        String str = ReverseWords("JoyCastle to Welcome. together game awesome an make Let's.");
+        Console.WriteLine(str);
+        Console.ReadKey();
+    }
+    public static string ReverseWords(string input)
+    {
+        if (String.IsNullOrEmpty(input))
+        {
+            return input; 
+        }
+        String temp_str = input.Replace(",","#").Replace(".","#");
+        string[] sentences = temp_str.Split('#');
+        StringBuilder output = new StringBuilder(); 
+        for(int i = 0; i<= sentences.Length - 1;i++)
+        {
+            string[] splits = sentences[i].Split(' ');
+            for(int j = splits.Length - 1; j >= 0 ; j--)
+            {
+                output.Append(splits[j]); 
+                if(j != 0)
+                {
+                    output.Append(" "); 
+                }
+            }
+            output.Append(".");
+        }
+        return output.ToString(); 
+    }
+}
